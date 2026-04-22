@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — Monetiza Tu Talento | Guías para Artistas Independientes</title>
+<meta name="description" content="Artículos y guías completas para artistas independientes: cómo monetizar tu música, crecer en Spotify, entrar en playlists y cobrar regalías cada mes.">
+<meta name="keywords" content="monetizar música, spotify algoritmo, distribuidora musical, playlists colaborativas, regalías musicales, artistas independientes, distrokid, spotify for artists">
+<meta name="google-adsense-account" content="ca-pub-6567755987358873">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6567755987358873" crossorigin="anonymous"></script>
+<meta name="google-site-verification" content="QDF-rfSq5cgvgQHmWI1hFpdHTEQfdSicRdEqGnSlTP0" />
+<meta name="google-site-verification" content="yEheNXa67HieMqJ75mABaDR-UZlXzy43NHKTDxBZ9zM" />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black:#050507;--deep:#0a0a10;--card:#0f0f18;--border:#1e1e2e;
+  --gold:#f0b429;--green:#00e676;--white:#f0eeea;--muted:#888899;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:16px 48px;background:rgba(5,5,7,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-brand{font-family:'Poppins',sans-serif;font-weight:700;font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);text-decoration:none}
+.nav-links{display:flex;gap:28px}
+.nav-links a{color:var(--muted);font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;font-weight:600;font-family:'Poppins',sans-serif;transition:color .3s}
+.nav-links a:hover{color:var(--white)}
+
+.blog-hero{padding:140px 48px 80px;text-align:center;background:var(--deep);border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+.blog-hero::before{content:'BLOG';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-family:'Bebas Neue',sans-serif;font-size:25vw;color:rgba(255,255,255,.02);white-space:nowrap;pointer-events:none}
+.blog-hero h1{font-family:'Poppins',sans-serif;font-weight:900;font-size:clamp(2.5rem,6vw,4.5rem);letter-spacing:-1px;position:relative}
+.blog-hero h1 em{color:var(--gold);font-style:normal}
+.blog-hero p{color:var(--muted);font-size:1rem;max-width:560px;margin:16px auto 0;line-height:1.8}
+.hero-tag{font-family:'Poppins',sans-serif;font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:block}
+
+.blog-grid{max-width:1100px;margin:0 auto;padding:80px 48px;display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+
+.article-card{background:var(--card);border:1px solid var(--border);cursor:pointer;transition:border-color .3s,background .3s;position:relative;overflow:hidden}
+.article-card:hover{border-color:rgba(240,180,41,.4);background:#131320}
+.article-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .4s}
+.article-card:hover::before{transform:scaleX(1)}
+.card-img{width:100%;height:180px;object-fit:cover;display:block;filter:brightness(.85);transition:filter .3s}
+.article-card:hover .card-img{filter:brightness(1)}
+.card-body{padding:24px}
+.card-tag{font-family:'Poppins',sans-serif;font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:block}
+.card-title{font-family:'Poppins',sans-serif;font-weight:700;font-size:1rem;line-height:1.35;margin-bottom:10px}
+.card-excerpt{font-size:.82rem;color:var(--muted);line-height:1.7}
+.card-meta{display:flex;align-items:center;gap:12px;margin-top:16px;padding-top:16px;border-top:1px solid var(--border)}
+.card-read{font-family:'Poppins',sans-serif;font-size:.65rem;letter-spacing:1px;color:var(--muted);text-transform:uppercase}
+.card-arrow{color:var(--gold);margin-left:auto;font-size:1rem}
+
+/* ARTICLE MODAL */
+.modal-overlay{position:fixed;inset:0;z-index:1000;background:rgba(5,5,7,.96);opacity:0;pointer-events:none;transition:opacity .3s;overflow-y:auto}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal-article{max-width:780px;margin:80px auto;background:var(--card);border:1px solid var(--border);position:relative}
+.modal-close{position:fixed;top:24px;right:24px;z-index:1001;background:var(--gold);color:var(--black);border:none;width:44px;height:44px;font-size:1.2rem;cursor:pointer;font-weight:700;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.modal-close:hover{background:var(--white)}
+.article-hero-img{width:100%;height:320px;object-fit:cover;display:block}
+.article-content{padding:48px}
+.article-tag{font-family:'Poppins',sans-serif;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:block}
+.article-title{font-family:'Poppins',sans-serif;font-weight:900;font-size:clamp(1.6rem,4vw,2.2rem);line-height:1.2;letter-spacing:-.5px;margin-bottom:20px}
+.article-meta{display:flex;gap:20px;margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid var(--border)}
+.article-meta span{font-size:.78rem;color:var(--muted);font-family:'Poppins',sans-serif}
+.article-meta strong{color:var(--gold)}
+.article-body h2{font-family:'Poppins',sans-serif;font-weight:800;font-size:1.3rem;color:var(--white);margin:36px 0 14px;letter-spacing:-.3px}
+.article-body h3{font-family:'Poppins',sans-serif;font-weight:700;font-size:1.05rem;color:var(--gold);margin:24px 0 10px}
+.article-body p{font-size:.95rem;color:rgba(240,238,234,.85);line-height:1.85;margin-bottom:16px}
+.article-body ul,.article-body ol{margin:12px 0 20px 20px}
+.article-body li{font-size:.93rem;color:rgba(240,238,234,.8);line-height:1.8;margin-bottom:6px}
+.article-body strong{color:var(--white);font-weight:700}
+.article-body em{color:var(--gold);font-style:normal;font-weight:600}
+.highlight-box{background:rgba(240,180,41,.08);border:1px solid rgba(240,180,41,.3);border-left:4px solid var(--gold);padding:20px 24px;margin:24px 0}
+.highlight-box p{margin:0;color:var(--white);font-size:.92rem}
+.green-box{background:rgba(0,230,118,.06);border:1px solid rgba(0,230,118,.25);border-left:4px solid var(--green);padding:20px 24px;margin:24px 0}
+.green-box p{margin:0;color:var(--white);font-size:.92rem}
+.cta-box{background:rgba(240,180,41,.1);border:1px solid var(--gold);padding:32px;margin:36px 0;text-align:center}
+.cta-box h3{font-family:'Poppins',sans-serif;font-weight:800;font-size:1.2rem;color:var(--white);margin-bottom:10px}
+.cta-box p{color:var(--muted);font-size:.88rem;margin-bottom:18px}
+.btn{display:inline-block;padding:12px 28px;font-family:'Poppins',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;cursor:pointer;border:none;transition:all .3s}
+.btn-gold{background:var(--gold);color:var(--black)}
+.btn-gold:hover{background:var(--white);transform:translateY(-2px)}
+
+footer{border-top:1px solid var(--border);padding:36px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:18px;background:var(--deep)}
+footer p{font-size:.78rem;color:var(--muted)}
+footer a{color:var(--gold);text-decoration:none;font-size:.78rem}
+
+@media(max-width:900px){
+  nav{padding:14px 20px}.nav-links{display:none}
+  .blog-hero{padding:100px 20px 60px}
+  .blog-grid{grid-template-columns:1fr;padding:40px 20px;gap:16px}
+  .article-content{padding:28px 20px}
+  footer{flex-direction:column;text-align:center;padding:28px 20px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">← Monetiza Tu Talento</a>
+  <div class="nav-links">
+    <a href="index.html#distribuidora">Distribuidora</a>
+    <a href="index.html#spotify">Spotify Tips</a>
+    <a href="index.html#playlists">Playlists</a>
+    <a href="index.html#contacto">Contacto</a>
+  </div>
+</nav>
+
+<div class="blog-hero">
+  <span class="hero-tag">// Recursos para artistas</span>
+  <h1>BLOG & <em>GUÍAS</em></h1>
+  <p>Todo lo que necesitas saber para monetizar tu música, dominar Spotify y vivir de tu arte. Contenido gratuito, actualizado y sin rodeos.</p>
+</div>
+
+<div class="blog-grid">
+
+  <div class="article-card" onclick="openArticle(0)">
+    <img class="card-img" src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=600&q=80" alt="Algoritmo Spotify">
+    <div class="card-body">
+      <span class="card-tag">Spotify</span>
+      <div class="card-title">Cómo funciona el algoritmo de Spotify en 2025 y cómo usarlo a tu favor</div>
+      <div class="card-excerpt">Descubre los factores que Spotify usa para recomendar tu música y las estrategias probadas para multiplicar tus oyentes.</div>
+      <div class="card-meta"><span class="card-read">10 min lectura</span><span class="card-arrow">→</span></div>
+    </div>
+  </div>
+
+  <div class="article-card" onclick="openArticle(1)">
+    <img class="card-img" src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600&q=80" alt="DistroKid guía">
+    <div class="card-body">
+      <span class="card-tag">Distribución</span>
+      <div class="card-title">Guía completa para registrarte en DistroKid y distribuir tu música</div>
+      <div class="card-excerpt">Paso a paso cómo crear tu cuenta, subir tu primera canción y estar en Spotify en menos de 24 horas.</div>
+      <div class="card-meta"><span class="card-read">8 min lectura</span><span class="card-arrow">→</span></div>
+    </div>
+  </div>
+
+  <div class="article-card" onclick="openArticle(2)">
+    <img class="card-img" src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=600&q=80" alt="Playlists colaborativas">
+    <div class="card-body">
+      <span class="card-tag">Playlists</span>
+      <div class="card-title">Qué son las playlists colaborativas y cómo entrar en ellas siendo artista nuevo</div>
+      <div class="card-excerpt">Todo sobre las playlists colaborativas de Spotify: qué son, cómo funcionan y cómo conseguir que tus canciones aparezcan en ellas.</div>
+      <div class="card-meta"><span class="card-read">7 min lectura</span><span class="card-arrow">→</span></div>
+    </div>
+  </div>
+
+  <div class="article-card" onclick="openArticle(3)">
+    <img class="card-img" src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&q=80" alt="Regalías musicales">
+    <div class="card-body">
+      <span class="card-tag">Ingresos</span>
+      <div class="card-title">Cómo cobrar regalías siendo artista independiente: guía completa 2025</div>
+      <div class="card-excerpt">Entiende qué son las regalías, cuánto paga Spotify por stream y cómo asegurarte de cobrar todo lo que te corresponde.</div>
+      <div class="card-meta"><span class="card-read">9 min lectura</span><span class="card-arrow">→</span></div>
+    </div>
+  </div>
+
+  <div class="article-card" onclick="openArticle(4)">
+    <img class="card-img" src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600&q=80" alt="Spotify for Artists">
+    <div class="card-body">
+      <span class="card-tag">Spotify</span>
+      <div class="card-title">Spotify for Artists: cómo configurar tu perfil para atraer más oyentes</div>
+      <div class="card-excerpt">Tu perfil de artista en Spotify es tu escaparate. Aprende a optimizarlo al 100% para causar buena impresión y retener oyentes.</div>
+      <div class="card-meta"><span class="card-read">8 min lectura</span><span class="card-arrow">→</span></div>
+    </div>
+  </div>
+
+  <div class="article-card" onclick="openArticle(5)">
+    <img class="card-img" src="https://images.unsplash.com/photo-1571330735066-03aaa9429d89?w=600&q=80" alt="Oyentes Spotify">
+    <div class="card-body">
+      <span class="card-tag">Crecimiento</span>
+      <div class="card-title">10 estrategias probadas para aumentar tus oyentes en Spotify de forma orgánica</div>
+      <div class="card-excerpt">Sin bots, sin comprar reproducciones. Estrategias reales que usan los artistas que crecen de verdad en la plataforma.</div>
+      <div class="card-meta"><span class="card-read">11 min lectura</span><span class="card-arrow">→</span></div>
+    </div>
+  </div>
+
+  <div class="article-card" onclick="openArticle(6)">
+    <img class="card-img" src="https://images.unsplash.com/photo-1504898770365-14faca6a7320?w=600&q=80" alt="Lanzamiento musical">
+    <div class="card-body">
+      <span class="card-tag">Estrategia</span>
+      <div class="card-title">Cómo hacer un lanzamiento musical exitoso paso a paso en 2025</div>
+      <div class="card-excerpt">El plan completo para lanzar tu próxima canción o álbum y maximizar su impacto desde el primer día.</div>
+      <div class="card-meta"><span class="card-read">10 min lectura</span><span class="card-arrow">→</span></div>
+    </div>
+  </div>
+
+  <div class="article-card" onclick="openArticle(7)">
+    <img class="card-img" src="https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=600&q=80" alt="Redes sociales música">
+    <div class="card-body">
+      <span class="card-tag">Marketing</span>
+      <div class="card-title">Cómo usar las redes sociales para promocionar tu música y crecer como artista</div>
+      <div class="card-excerpt">Instagram, TikTok, YouTube: cuál usar, qué publicar y cómo convertir seguidores en oyentes reales en Spotify.</div>
+      <div class="card-meta"><span class="card-read">9 min lectura</span><span class="card-arrow">→</span></div>
+    </div>
+  </div>
+
+  <div class="article-card" onclick="openArticle(8)">
+    <img class="card-img" src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&q=80" alt="Distribuidoras musicales">
+    <div class="card-body">
+      <span class="card-tag">Distribución</span>
+      <div class="card-title">Las mejores distribuidoras musicales de 2025: cuál elegir y por qué</div>
+      <div class="card-excerpt">Comparativa honesta entre DistroKid, TuneCore, CD Baby y otras. Te decimos cuál es mejor según tu situación.</div>
+      <div class="card-meta"><span class="card-read">8 min lectura</span><span class="card-arrow">→</span></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal">
+  <button class="modal-close" onclick="closeArticle()">✕</button>
+  <div class="modal-article" id="modalContent"></div>
+</div>
+
+<footer>
+  <p>© 2025 Monetiza Tu Talento — Todos los derechos reservados</p>
+  <div style="display:flex;gap:20px;flex-wrap:wrap">
+    <a href="index.html">Inicio</a>
+    <a href="index.html#contacto">Contacto</a>
+    <a href="index.html#playlists">Playlists</a>
+    <a href="https://distrokid.com/vip/seven/4422815" target="_blank">DistroKid con descuento</a>
+  </div>
+</footer>
+
+<script>
+const articles = [
+
+// ARTÍCULO 0
+{
+tag:'Spotify',
+title:'Cómo funciona el algoritmo de Spotify en 2025 y cómo usarlo a tu favor',
+img:'https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=900&q=80',
+time:'10 min lectura',
+date:'Abril 2025',
+body:`
+<h2>¿Qué es el algoritmo de Spotify y por qué es tan importante?</h2>
+<p>El algoritmo de Spotify es el sistema de inteligencia artificial que decide qué canciones recomienda a cada usuario. Si entiendes cómo funciona, puedes posicionar tu música para que llegue a miles de oyentes nuevos sin gastar un euro en publicidad.</p>
+<p>A diferencia de lo que muchos artistas creen, el algoritmo no favorece a los artistas famosos por el simple hecho de serlo. Favorece las canciones que generan buenas señales de comportamiento de los usuarios. Esto significa que tú, como artista independiente, tienes las mismas posibilidades de ser recomendado si sabes jugar bien tus cartas.</p>
+
+<h2>Las señales que Spotify mide para recomendar tu música</h2>
+<p>Spotify no es transparente sobre su algoritmo exacto, pero tras años de análisis por parte de expertos del sector, se sabe que las señales más importantes son las siguientes:</p>
+
+<h3>1. Save Rate (tasa de guardado)</h3>
+<p>Cuando un oyente guarda tu canción en su biblioteca o en una playlist propia, eso es la señal más potente que puedes enviar al algoritmo. Indica que la canción tiene suficiente valor para que alguien quiera volver a escucharla. Un save rate alto dispara las recomendaciones algorítmicas.</p>
+
+<h3>2. Porcentaje de escucha completa</h3>
+<p>Spotify mide cuánto tiempo escucha cada usuario antes de pasar a la siguiente canción. Si la mayoría de tus oyentes escuchan más del 80% de tu canción, el algoritmo lo interpreta como una señal de calidad. Si muchos la saltan en los primeros 30 segundos, penaliza su distribución.</p>
+<p>Esto tiene una implicación directísima: <em>el inicio de tu canción es crucial</em>. Los primeros 5-10 segundos deben enganchar al oyente sin introducción larga ni silencios iniciales.</p>
+
+<h3>3. Número de streams únicos vs. totales</h3>
+<p>El algoritmo diferencia entre oyentes únicos y streams repetidos del mismo oyente. Prefiere canciones que llegan a mucha gente nueva frente a las que son escuchadas repetidamente por los mismos fans. Esto premia la capacidad de una canción de llegar a nuevas audiencias.</p>
+
+<h3>4. Follows de artista</h3>
+<p>Cuando alguien sigue tu perfil de artista después de descubrirte, el algoritmo lo registra como una señal de interés elevado y aumenta la probabilidad de mostrarte a oyentes similares.</p>
+
+<h3>5. Adición a playlists de usuarios</h3>
+<p>Que los oyentes añadan tu canción a sus playlists personales es una de las señales más valiosas. Es un indicador de que la música conecta emocionalmente con la persona.</p>
+
+<h2>Las playlists algorítmicas: tu principal objetivo</h2>
+<p>Spotify tiene varias playlists generadas automáticamente por el algoritmo que son fundamentales para el crecimiento de los artistas independientes:</p>
+
+<h3>Discover Weekly</h3>
+<p>Se actualiza cada lunes y ofrece 30 canciones personalizadas a cada usuario. Aparecer en el Discover Weekly de miles de personas puede significar decenas de miles de streams en una semana. El algoritmo te mete aquí cuando detecta que tu música encaja con los gustos de oyentes que no te conocen aún.</p>
+
+<h3>Release Radar</h3>
+<p>Se actualiza cada viernes e incluye lanzamientos recientes de artistas que el usuario sigue o que el algoritmo cree que le gustarán. Es esencial lanzar con regularidad para aparecer aquí consistentemente.</p>
+
+<h3>Radio y Autoplay</h3>
+<p>Cuando un usuario termina una playlist, Spotify activa el Autoplay con canciones similares. Aparecer en el Autoplay de artistas populares de tu género es una fuente enorme de oyentes nuevos.</p>
+
+<h2>Estrategias concretas para trabajar con el algoritmo</h2>
+
+<h3>Lanza con regularidad</h3>
+<p>El algoritmo premia la constancia. Artistas que lanzan cada 4-6 semanas tienen más presencia algorítmica que los que desaparecen durante meses. No necesitas lanzar un álbum completo: un single cada mes ya marca una diferencia enorme.</p>
+
+<h3>Usa el Spotify for Artists para hacer pitch editorial</h3>
+<p>Antes de cada lanzamiento, Spotify te permite enviar tu canción al equipo editorial para que la consideren en playlists editoriales. Hazlo siempre con al menos 7 días de antelación y rellena toda la información posible: género, estado de ánimo, instrumento principal, descripción de la canción.</p>
+
+<h3>Construye tu propia playlist</h3>
+<p>Crea una playlist pública con tu música mezclada con canciones de artistas similares. Titúlala con palabras clave de búsqueda de tu género. Esto te expone a búsquedas dentro de Spotify y el algoritmo aprende mejor con qué artistas asociarte.</p>
+
+<div class="highlight-box"><p>💡 <strong>Dato clave:</strong> El algoritmo de Spotify analiza datos de comportamiento real de usuarios, no métricas artificiales. Por eso comprar streams o seguidores no solo no funciona, sino que puede penalizar tu cuenta. Los oyentes reales son los únicos que mueven el algoritmo a tu favor.</p></div>
+
+<h2>El papel de las playlists externas en el algoritmo</h2>
+<p>Entrar en playlists de curators externos es una de las formas más efectivas de alimentar el algoritmo. Cuando oyentes reales te descubren a través de playlists colaborativas y reaccionan positivamente (guardando la canción, siguiendo tu perfil), el algoritmo lo registra y empieza a recomendarte de forma autónoma.</p>
+<p>Plataformas como <strong>Algoritmo en Movimiento</strong> o <strong>Liga Music</strong> conectan a artistas con curators reales que gestionan playlists activas. A diferencia de los servicios fraudulentos que usan bots, estas plataformas generan oyentes reales que generan señales válidas para el algoritmo.</p>
+
+<h2>Conclusión: el algoritmo es tu aliado si lo respetas</h2>
+<p>El algoritmo de Spotify no es tu enemigo ni algo misterioso e inaccesible. Es un sistema diseñado para conectar buena música con las personas que van a disfrutarla. Si produces música de calidad, la lanzas con regularidad, optimizas los primeros segundos de cada canción y trabajas para conseguir oyentes reales, el algoritmo hará el resto.</p>
+<p>La clave está en construir una base sólida de oyentes auténticos que reaccionen positivamente a tu música. El resto viene solo.</p>
+
+<div class="cta-box">
+  <h3>¿Listo para entrar en playlists reales?</h3>
+  <p>Empieza con 3 envíos gratuitos a playlists colaborativas activas este mes.</p>
+  <a href="https://www.algoritmoenmovimiento.com" target="_blank" class="btn btn-gold">Empezar gratis →</a>
+</div>
+`
+},
+
+// ARTÍCULO 1
+{
+tag:'Distribución',
+title:'Guía completa para registrarte en DistroKid y distribuir tu música',
+img:'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=900&q=80',
+time:'8 min lectura',
+date:'Abril 2025',
+body:`
+<h2>¿Qué es DistroKid y por qué es la mejor opción para artistas independientes?</h2>
+<p>DistroKid es una distribuidora musical digital que te permite subir tu música a Spotify, Apple Music, TikTok, Amazon Music y más de 150 plataformas de streaming en todo el mundo. Es la opción favorita de millones de artistas independientes por una razón muy sencilla: te quedas con el 100% de tus regalías y el precio anual es el más competitivo del mercado.</p>
+<p>A diferencia de distribuidoras como CD Baby o TuneCore que cobran comisiones sobre tus ingresos, DistroKid cobra una tarifa anual fija y tú recibes cada céntimo que generes.</p>
+
+<h2>¿Qué necesitas antes de registrarte?</h2>
+<p>Antes de empezar el proceso de registro, asegúrate de tener preparado lo siguiente:</p>
+<ul>
+  <li><strong>Tu música en formato WAV:</strong> mínimo 16-bit, 44.1kHz. Nunca subas MP3 si tienes el original en WAV.</li>
+  <li><strong>Artwork (portada):</strong> imagen cuadrada en formato JPG o PNG de al menos 3000×3000 píxeles. Sin logos de marcas, sin URLs, sin bordes blancos.</li>
+  <li><strong>Metadata completa:</strong> título exacto de la canción, nombre del artista tal como quieres que aparezca, año de grabación, género y subgénero, nombre del compositor y letrista.</li>
+  <li><strong>Cuenta de PayPal o Stripe:</strong> para recibir tus regalías.</li>
+</ul>
+
+<h2>Paso 1: Crear tu cuenta en DistroKid</h2>
+<p>Ve a la página de DistroKid usando nuestro <strong>link de referido</strong> para obtener un descuento exclusivo en tu primer año:</p>
+<div class="green-box"><p>👉 Accede con descuento en: <strong>distrokid.com/vip/seven/4422815</strong></p></div>
+<p>Una vez ahí, haz clic en "Sign Up" e introduce tu dirección de email. Elige una contraseña segura y selecciona el plan que más te convenga. El plan básico "Musician" cubre todo lo que necesita un artista que empieza.</p>
+
+<h2>Paso 2: Elegir tu plan</h2>
+<p>DistroKid ofrece varios planes anuales. Para artistas que empiezan, el plan <strong>Musician</strong> es más que suficiente:</p>
+<ul>
+  <li><strong>Musician:</strong> permite un solo nombre de artista, canciones ilimitadas, 100% de regalías.</li>
+  <li><strong>Musician Plus:</strong> añade estadísticas avanzadas, control de fecha de lanzamiento más preciso y otras funciones extra.</li>
+  <li><strong>Label:</strong> para sellos o artistas con múltiples nombres artísticos.</li>
+</ul>
+
+<h2>Paso 3: Subir tu primera canción</h2>
+<p>Una vez creada tu cuenta, haz clic en "Upload" y sigue estos pasos:</p>
+<ol>
+  <li>Selecciona "Single" si subes una canción, "Album/EP" si subes varios temas.</li>
+  <li>Sube el archivo WAV de tu canción.</li>
+  <li>Sube tu artwork en la calidad correcta.</li>
+  <li>Rellena toda la metadata: título, artista, compositores, año, género.</li>
+  <li>Selecciona las plataformas donde quieres distribuir (recomendamos seleccionar todas).</li>
+  <li>Elige la fecha de lanzamiento. <strong>Importante:</strong> programa el lanzamiento al menos 3 semanas en el futuro para poder hacer pitch editorial en Spotify.</li>
+</ol>
+
+<h2>Paso 4: Hacer pitch editorial en Spotify</h2>
+<p>Esta es una de las funciones más valiosas que DistroKid facilita. Una vez subida tu canción con fecha de lanzamiento futura, aparecerá automáticamente en Spotify for Artists en la sección de "Upcoming" y podrás enviarla a los editores de playlists de Spotify.</p>
+<p>Para hacer el pitch correctamente:</p>
+<ul>
+  <li>Describe la canción de forma detallada y honesta</li>
+  <li>Indica el estado de ánimo y la energía de la canción</li>
+  <li>Especifica el instrumento principal</li>
+  <li>Explica brevemente la historia detrás de la canción</li>
+</ul>
+
+<h2>Paso 5: Reclamar tu perfil en Spotify for Artists</h2>
+<p>Una vez que tu canción esté publicada en Spotify, tienes que reclamar tu perfil de artista en <strong>artists.spotify.com</strong>. Este proceso es gratuito y te da acceso a estadísticas detalladas, la posibilidad de editar tu bio, subir fotos y elegir tu "Artist Pick" (la canción que aparece destacada en tu perfil).</p>
+
+<h2>Paso 6: Configurar el pago de regalías</h2>
+<p>En el panel de DistroKid, ve a "Bank Account" y conecta tu cuenta de PayPal o bancaria. Las regalías se van acumulando y puedes retirarlas en cualquier momento. DistroKid procesa los pagos de las plataformas normalmente cada mes o dos meses dependiendo de la plataforma.</p>
+
+<div class="highlight-box"><p>💡 <strong>Consejo:</strong> Activa la función "Leave a Legacy" de DistroKid. Por un pequeño pago adicional, garantiza que tu música permanezca en las plataformas aunque decidas no renovar tu suscripción. Muy útil si en el futuro cambias de distribuidora.</p></div>
+
+<h2>¿Cuánto tarda en aparecer mi música en Spotify?</h2>
+<p>DistroKid es la distribuidora más rápida del mercado. Normalmente tu música aparece en Spotify en 24-48 horas desde que la subes. Apple Music puede tardar hasta 5 días. Para el resto de plataformas el tiempo varía entre 1 y 7 días.</p>
+
+<div class="cta-box">
+  <h3>Empieza a distribuir tu música hoy</h3>
+  <p>Usa nuestro link de referido y obtén un descuento exclusivo en tu primer año de DistroKid.</p>
+  <a href="https://distrokid.com/vip/seven/4422815" target="_blank" class="btn btn-gold">Registrarme con descuento →</a>
+</div>
+`
+},
+
+// ARTÍCULO 2
+{
+tag:'Playlists',
+title:'Qué son las playlists colaborativas y cómo entrar en ellas siendo artista nuevo',
+img:'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=900&q=80',
+time:'7 min lectura',
+date:'Abril 2025',
+body:`
+<h2>¿Qué son exactamente las playlists colaborativas?</h2>
+<p>Las playlists colaborativas de Spotify son listas de reproducción creadas y gestionadas por usuarios reales (llamados curators) que aceptan envíos de artistas independientes para incluir sus canciones. No son playlists oficiales de Spotify, sino playlists de usuarios que han crecido hasta acumular miles o decenas de miles de seguidores.</p>
+<p>El concepto es simple: un curator crea una playlist de, por ejemplo, "Trap español 2025" que va creciendo en seguidores porque ofrece música de calidad. Artistas que quieren llegar a esa audiencia envían sus canciones para ser consideradas. Si al curator le gusta la canción y encaja con el estilo de la playlist, la añade y el artista llega a todos los seguidores de esa lista.</p>
+
+<h2>¿Por qué son tan importantes para los artistas nuevos?</h2>
+<p>Para un artista que acaba de empezar, conseguir oyentes nuevos es el mayor desafío. Las playlists colaborativas resuelven ese problema de tres formas:</p>
+<ul>
+  <li><strong>Exposición inmediata:</strong> tu canción llega a los seguidores de la playlist en el momento en que se añade.</li>
+  <li><strong>Oyentes cualificados:</strong> son personas que ya han demostrado interés en tu género musical, por lo que la probabilidad de que guarden tu canción es mucho mayor.</li>
+  <li><strong>Señales positivas al algoritmo:</strong> los oyentes reales que reaccionan positivamente generan las señales que Spotify necesita para empezar a recomendarte algorítmicamente.</li>
+</ul>
+
+<h2>La diferencia entre playlists reales y servicios fraudulentos</h2>
+<p>El mercado está lleno de servicios que prometen "10.000 streams garantizados" o "entrada en 50 playlists" por precios ridículos. Estos servicios utilizan bots o cuentas falsas para inflar las estadísticas artificialmente. El problema es grave:</p>
+<ul>
+  <li>Spotify detecta el tráfico artificial y puede <strong>eliminar tu cuenta de artista</strong></li>
+  <li>Los streams de bots no generan regalías reales</li>
+  <li>No alimentan el algoritmo — de hecho, lo perjudican</li>
+  <li>Distorsionan tus estadísticas y dificultan tomar decisiones correctas</li>
+</ul>
+<div class="highlight-box"><p>⚠️ <strong>Importante:</strong> Spotify ha eliminado miles de canciones y bloqueado cuentas de artistas por uso de streams artificiales. No vale la pena arriesgarse. Los servicios legítimos siempre pueden demostrar que sus playlists tienen seguidores reales y engagement auténtico.</p></div>
+
+<h2>Cómo identificar un servicio de playlists legítimo</h2>
+<p>Antes de enviar tu canción a cualquier servicio de playlists, verifica estos puntos:</p>
+<ul>
+  <li>Las playlists tienen seguidores reales verificables directamente en Spotify</li>
+  <li>Las canciones de las playlists reciben comentarios y guardados reales</li>
+  <li>El servicio es transparente sobre qué playlists incluye y cuántos seguidores tienen</li>
+  <li>No garantizan un número fijo de streams (eso es señal de fraude)</li>
+  <li>Hay personas reales detrás con las que puedes contactar</li>
+</ul>
+
+<h2>Cómo hacer un pitch efectivo a un curator</h2>
+<p>El pitch es el mensaje que envías al curator solicitando que considere tu canción. Un buen pitch marca la diferencia entre ser ignorado y ser añadido a la playlist. Sigue estas pautas:</p>
+
+<h3>Escucha la playlist antes de enviar</h3>
+<p>Parece obvio, pero muchos artistas envían su canción a playlists que no tienen nada que ver con su estilo. Escucha las últimas canciones añadidas y asegúrate de que tu música encaja en el tono, energía y género de esa lista.</p>
+
+<h3>Personaliza el mensaje</h3>
+<p>Nunca envíes mensajes genéricos. Menciona el nombre del curator, nombra alguna canción concreta de la playlist que te guste y explica brevemente por qué crees que tu canción encaja ahí.</p>
+
+<h3>Sé breve y directo</h3>
+<p>Los curators reciben decenas de pitches al día. Un mensaje de 3-4 líneas bien escritas es más efectivo que un texto largo. Presenta quién eres, enlaza tu canción en Spotify y explica por qué encaja. Nada más.</p>
+
+<h3>Cuida la calidad del audio</h3>
+<p>Un curator rechaza automáticamente canciones con mal master o producción pobre. Asegúrate de que tu canción suena bien en auriculares, altavoces bluetooth y el móvil.</p>
+
+<h2>Las mejores plataformas para enviar tu música a playlists</h2>
+<p>Existen plataformas especializadas que facilitan la conexión entre artistas y curators de forma organizada y segura. Las que recomendamos después de probar decenas de opciones son:</p>
+
+<h3>Algoritmo en Movimiento</h3>
+<p>Ofrece <strong>3 envíos gratuitos cada mes</strong> sin necesidad de tarjeta de crédito. Perfecta para artistas que empiezan y quieren probar el sistema sin invertir. Los curators son reales y las playlists tienen seguidores activos. Disponible en <strong>algoritmoenmovimiento.com</strong></p>
+
+<h3>Liga Music</h3>
+<p>Servicio premium con curators verificados y playlists con alto engagement. Sistema profesional de pitching con seguimiento de resultados. Para artistas que quieren escalar su presencia de forma más agresiva. Disponible en <strong>ligamusic.com</strong></p>
+
+<div class="cta-box">
+  <h3>Empieza gratis: 3 envíos a playlists cada mes</h3>
+  <p>Sin tarjeta, sin compromiso. Conecta con curators reales y llega a nuevos oyentes esta semana.</p>
+  <a href="https://www.algoritmoenmovimiento.com" target="_blank" class="btn btn-gold">Empezar gratis →</a>
+</div>
+`
+},
+
+// ARTÍCULO 3
+{
+tag:'Ingresos',
+title:'Cómo cobrar regalías siendo artista independiente: guía completa 2025',
+img:'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=900&q=80',
+time:'9 min lectura',
+date:'Abril 2025',
+body:`
+<h2>¿Qué son las regalías musicales?</h2>
+<p>Las regalías musicales son los pagos que generan los derechos de autor cuando tu música es reproducida, descargada, emitida por radio o utilizada en cualquier medio. Como artista independiente, tienes derecho a cobrar diferentes tipos de regalías que muchos músicos desconocen y por tanto dejan de percibir.</p>
+<p>Entender el sistema de regalías es fundamental para monetizar tu música correctamente y asegurarte de cobrar todo lo que te corresponde.</p>
+
+<h2>Tipos de regalías que puede generar tu música</h2>
+
+<h3>Regalías de streaming (master rights)</h3>
+<p>Son los pagos que generan las reproducciones en plataformas como Spotify, Apple Music, Amazon Music o Tidal. Estas regalías las recauda tu distribuidora (DistroKid, TuneCore, etc.) y te las transfiere directamente. Si distribuyes con DistroKid y tienes el 100% de los derechos, recibes el 100% de estas regalías.</p>
+<p><strong>¿Cuánto paga Spotify por stream?</strong> El pago varía entre 0,003€ y 0,005€ por reproducción dependiendo del país del oyente, el tipo de suscripción y otros factores. Esto significa que necesitas aproximadamente 250-350 streams para generar 1€. Con 100.000 streams mensuales puedes generar entre 300€ y 500€ al mes.</p>
+
+<h3>Regalías de composición (publishing rights)</h3>
+<p>Son los pagos generados por los derechos de la composición (la melodía y la letra). Estas regalías las gestiona normalmente una entidad de gestión colectiva como la SGAE en España, SADAIC en Argentina o ACUM en México.</p>
+<p>Muchos artistas distribuyen su música pero nunca se registran en la SGAE, perdiendo una fuente de ingresos significativa. Si eres compositor de tus propias canciones, regístrate en la entidad de tu país.</p>
+
+<h3>Regalías de sincronización</h3>
+<p>Se generan cuando tu música se usa en una película, serie, videojuego, publicidad o cualquier contenido audiovisual. Esta puede ser la fuente de ingresos más lucrativa: una sola sincronización puede generar miles de euros. Para acceder a ella, registra tu música en plataformas de licensing como Musicbed, Artlist o Epidemicsound.</p>
+
+<h3>Regalías de radio y televisión</h3>
+<p>Cada vez que tu canción suena en una radio o en televisión, genera regalías. Estas también las gestiona la SGAE u organismo equivalente en tu país. Para cobrarlas, debes tener tu música registrada correctamente.</p>
+
+<h2>Cómo asegurarte de cobrar todas tus regalías</h2>
+
+<h3>Paso 1: Elige una distribuidora que transfiera el 100% de regalías</h3>
+<p>Distribuidoras como DistroKid, Amuse o Soundrop no cobran comisión sobre tus ingresos. Evita distribuidoras antiguas que retienen un porcentaje de tus regalías de streaming.</p>
+
+<h3>Paso 2: Regístrate en la SGAE o equivalente</h3>
+<p>Si eres compositor, debes registrarte en la sociedad de gestión de derechos de autor de tu país. En España es la SGAE (sgae.es). En Argentina, SADAIC. En México, SACM. El proceso es gratuito y te permite cobrar las regalías de composición que de otro modo nunca recibirías.</p>
+
+<h3>Paso 3: Registra cada canción correctamente</h3>
+<p>Para cobrar regalías, cada canción debe estar registrada con la metadata correcta: título, compositores, porcentajes de autoría, año, ISRC y UPC. Tu distribuidora asigna automáticamente el ISRC (código único de cada grabación) y el UPC (código del lanzamiento).</p>
+
+<h3>Paso 4: Usa un administrador de publishing</h3>
+<p>Servicios como DistroKid Music Publishing, Songtrust o CD Baby Pro recaudan las regalías de composición internacionalmente por ti, algo que la SGAE no siempre hace de forma eficiente fuera de tu país. Si tus canciones tienen oyentes en mercados internacionales, considera usar uno de estos servicios.</p>
+
+<div class="highlight-box"><p>💡 <strong>Dato importante:</strong> Muchos artistas independientes dejan de cobrar regalías de composición simplemente porque no se han registrado en la entidad de gestión colectiva de su país. Este proceso es gratuito y puede representar cientos o miles de euros anuales dependiendo de tus streams.</p></div>
+
+<h2>¿Cuándo y cómo recibes el dinero?</h2>
+<p>Los tiempos de pago varían según la plataforma y la distribuidora. Por norma general:</p>
+<ul>
+  <li><strong>Spotify:</strong> paga a las distribuidoras mensualmente, con un retraso de 2-3 meses. Es decir, los streams de enero los cobras en marzo o abril.</li>
+  <li><strong>Apple Music:</strong> paga mensualmente con un retraso similar.</li>
+  <li><strong>DistroKid:</strong> transfiere el dinero a tu cuenta (PayPal o bancaria) en cuanto lo recibe de las plataformas. Puedes solicitar el pago cuando quieras si tienes más de 10$ acumulados.</li>
+</ul>
+
+<h2>Cómo aumentar tus ingresos por regalías</h2>
+<p>La forma más directa de aumentar tus ingresos es aumentar el número de streams. Pero también hay estrategias complementarias:</p>
+<ul>
+  <li>Llegar a mercados con mayor pago por stream (EEUU, UK, Suecia, Noruega pagan más que España o Latinoamérica)</li>
+  <li>Conseguir sincronizaciones en contenido audiovisual</li>
+  <li>Registrar correctamente los derechos de composición para no perder esas regalías</li>
+  <li>Conseguir que tu música aparezca en playlists editoriales de Spotify (las que tienen millones de seguidores)</li>
+</ul>
+
+<div class="cta-box">
+  <h3>Empieza a distribuir y cobrar regalías hoy</h3>
+  <p>Regístrate en DistroKid con descuento y empieza a monetizar tu música esta semana.</p>
+  <a href="https://distrokid.com/vip/seven/4422815" target="_blank" class="btn btn-gold">Registrarme con descuento →</a>
+</div>
+`
+},
+
+// ARTÍCULO 4
+{
+tag:'Spotify',
+title:'Spotify for Artists: cómo configurar tu perfil para atraer más oyentes',
+img:'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=900&q=80',
+time:'8 min lectura',
+date:'Abril 2025',
+body:`
+<h2>Por qué tu perfil de artista en Spotify es tan importante</h2>
+<p>Tu perfil en Spotify es la primera impresión que un nuevo oyente tiene de ti. Cuando alguien escucha tu canción en una playlist y le gusta, lo primero que hace es visitar tu perfil. Si ese perfil está incompleto, sin fotos o con información obsoleta, es muy probable que ese oyente potencial no te siga ni explore más tu música.</p>
+<p>Un perfil bien optimizado puede convertir a un oyente casual en un fan comprometido. Y eso se traduce en más saves, más follows y mejores señales para el algoritmo.</p>
+
+<h2>Cómo acceder a Spotify for Artists</h2>
+<p>Para reclamar y gestionar tu perfil de artista ve a <strong>artists.spotify.com</strong> e inicia sesión con tu cuenta de Spotify. Si tu música ya está publicada, podrás solicitar el acceso a tu perfil de artista. El proceso de verificación suele tardar entre 24 y 72 horas.</p>
+<p>Una vez verificado, tendrás acceso al panel de Spotify for Artists donde puedes ver estadísticas detalladas, editar tu perfil y hacer pitch a playlists editoriales.</p>
+
+<h2>Los elementos clave de un perfil optimizado</h2>
+
+<h3>Foto de perfil profesional</h3>
+<p>Tu foto de perfil es lo más visible de tu página. Usa una imagen de alta calidad (mínimo 750×750 píxeles), con buena iluminación y que represente tu imagen artística. Evita fotos borrosas, imágenes del teléfono de baja calidad o fotos de grupo donde no está claro quién eres el artista.</p>
+
+<h3>Imagen de cabecera (header)</h3>
+<p>El header es la imagen grande que aparece en la parte superior de tu perfil. Debe ser horizontal, de alta calidad y transmitir la estética de tu música. Cámbialo cuando lances nuevo material para mantener el perfil fresco.</p>
+
+<h3>Biografía completa y atractiva</h3>
+<p>La bio es tu presentación ante nuevos oyentes. Debe ser concisa (máximo 1500 caracteres), personal y describir quién eres como artista sin caer en clichés. Menciona tu género, tu propuesta artística y algo que te haga único. Puedes actualizarla en cualquier momento desde Spotify for Artists.</p>
+<p>Consejos para escribir una buena bio:</p>
+<ul>
+  <li>Empieza con algo que enganche, no con "Hola, soy..."</li>
+  <li>Describe tu sonido de forma que alguien que no te conoce pueda hacerse una idea</li>
+  <li>Menciona logros reales: playlists en las que has aparecido, colaboraciones destacadas</li>
+  <li>Escríbela en el idioma de tu audiencia principal</li>
+</ul>
+
+<h3>Artist Pick: el arma más subestimada</h3>
+<p>El Artist Pick es la función que te permite destacar una canción, álbum, playlist o podcast en la parte superior de tu perfil durante un período determinado. Es lo primero que ve cualquier visitante de tu perfil.</p>
+<p>Úsalo estratégicamente:</p>
+<ul>
+  <li>Cuando lances nueva música, pon el nuevo single o álbum como Artist Pick</li>
+  <li>Añade una nota personal explicando por qué es especial esa canción</li>
+  <li>Cámbialo regularmente para mantener el perfil dinámico</li>
+</ul>
+
+<h3>Vincula tus redes sociales</h3>
+<p>Spotify permite vincular tus perfiles de Instagram y Twitter/X directamente en tu página de artista. Hazlo siempre: los fans que quieran seguirte en otras plataformas podrán hacerlo fácilmente y aumentas tus posibilidades de construir una comunidad fuera de Spotify.</p>
+
+<h2>Cómo usar las estadísticas de Spotify for Artists</h2>
+<p>El panel de estadísticas es una herramienta increíblemente valiosa que muchos artistas infrautilizan. Te permite ver:</p>
+<ul>
+  <li><strong>Oyentes mensuales:</strong> cuántas personas únicas han escuchado tu música en los últimos 28 días</li>
+  <li><strong>Streams por canción:</strong> qué canciones funcionan mejor</li>
+  <li><strong>Demografía de tu audiencia:</strong> edad, género, país de tus oyentes</li>
+  <li><strong>Fuentes de descubrimiento:</strong> cómo te encuentra la gente (playlists, búsqueda, radio, etc.)</li>
+  <li><strong>Ciudades:</strong> en qué ciudades tienes más oyentes</li>
+</ul>
+<p>Estos datos son oro. Te permiten tomar decisiones informadas sobre dónde hacer giras, en qué idiomas crear contenido y qué tipo de canciones resuenan más con tu audiencia.</p>
+
+<h2>El pitch editorial: cómo funciona y cómo aprovecharlo</h2>
+<p>Una de las funciones más importantes de Spotify for Artists es la posibilidad de hacer pitch a las playlists editoriales de Spotify. Cuando tienes un lanzamiento programado, aparece automáticamente en la sección "Music" del panel y puedes enviar la canción al equipo de editores de Spotify para su consideración en playlists oficiales.</p>
+<p>Para maximizar tus posibilidades:</p>
+<ul>
+  <li>Programa el lanzamiento al menos 7 días antes de la fecha de publicación</li>
+  <li>Rellena absolutamente todos los campos del formulario de pitch</li>
+  <li>Sé específico sobre el estado de ánimo y energía de la canción</li>
+  <li>Escribe una descripción auténtica y personal de la canción</li>
+  <li>Solo puedes hacer pitch de un lanzamiento a la vez, así que elige bien cuándo usarlo</li>
+</ul>
+
+<div class="highlight-box"><p>💡 <strong>Consejo:</strong> Aunque no seas añadido a playlists editoriales, el proceso de hacer pitch hace que Spotify tenga más datos sobre tu canción, lo que puede ayudar al algoritmo a clasificarla y recomendarla correctamente.</p></div>
+
+<div class="cta-box">
+  <h3>¿Tu música ya está en Spotify?</h3>
+  <p>Si aún no has distribuido tu música, empieza hoy con DistroKid y accede a Spotify for Artists en 24 horas.</p>
+  <a href="https://distrokid.com/vip/seven/4422815" target="_blank" class="btn btn-gold">Distribuir mi música →</a>
+</div>
+`
+},
+
+// ARTÍCULO 5
+{
+tag:'Crecimiento',
+title:'10 estrategias probadas para aumentar tus oyentes en Spotify de forma orgánica',
+img:'https://images.unsplash.com/photo-1571330735066-03aaa9429d89?w=900&q=80',
+time:'11 min lectura',
+date:'Abril 2025',
+body:`
+<h2>Por qué el crecimiento orgánico es el único camino sostenible</h2>
+<p>Antes de entrar en las estrategias, es importante entender por qué el crecimiento orgánico es la única opción válida a largo plazo. Comprar streams, seguidores o usar bots puede generar números en el corto plazo, pero destruye tu credibilidad, viola los términos de uso de Spotify y puede resultar en la eliminación de tu perfil.</p>
+<p>El crecimiento orgánico, aunque más lento, construye una audiencia real que te escucha, comparte tu música y te sigue durante años. Eso tiene un valor que ningún bot puede replicar.</p>
+
+<h2>Estrategia 1: Lanza con consistencia, no con esporádicos</h2>
+<p>El algoritmo de Spotify premia la regularidad. Artistas que lanzan música cada 4-6 semanas tienen una presencia algorítmica significativamente mayor que los que desaparecen durante meses. No necesitas lanzar álbumes completos: un single bien producido cada mes es mucho más efectivo que un álbum cada dos años.</p>
+<p>Crea un calendario de lanzamientos y cúmplelo. Trata los lanzamientos como compromisos de trabajo, no como eventos espontáneos.</p>
+
+<h2>Estrategia 2: Optimiza los primeros 30 segundos de cada canción</h2>
+<p>Spotify cuenta un stream a partir de los 30 segundos de reproducción. Pero más importante que eso: los primeros 5-10 segundos deciden si el oyente se queda o pasa a la siguiente canción. Elimina introducciones largas, silencio inicial o buildups excesivos. Entra fuerte desde el principio.</p>
+
+<h2>Estrategia 3: Haz pitch editorial antes de cada lanzamiento</h2>
+<p>Spotify for Artists te permite enviar tu canción a los editores de playlists de Spotify mínimo 7 días antes del lanzamiento. Rellena todos los campos con información detallada y honesta. Incluso si no entras en playlists editoriales, el proceso ayuda al algoritmo a clasificar tu música correctamente.</p>
+
+<h2>Estrategia 4: Envía tu música a playlists colaborativas reales</h2>
+<p>Las playlists colaborativas de curators independientes son una de las formas más efectivas de conseguir oyentes nuevos. Plataformas como Algoritmo en Movimiento ofrecen 3 envíos gratuitos al mes. Lo fundamental es que las playlists tengan seguidores reales que reaccionen a la música.</p>
+
+<h2>Estrategia 5: Crea y mantiene tu propia playlist</h2>
+<p>Crea una playlist pública que mezcle tu música con artistas similares de tu género. Titúlala con keywords de búsqueda como "trap español nuevo 2025" o "indie acústico español". Actualízala regularmente y compártela en tus redes. Esto:</p>
+<ul>
+  <li>Aparece en búsquedas dentro de Spotify</li>
+  <li>Ayuda al algoritmo a entender con qué artistas te relacionas</li>
+  <li>Te da un contenido más para compartir en redes sociales</li>
+</ul>
+
+<h2>Estrategia 6: Dirige tráfico externo a Spotify</h2>
+<p>Cuando alguien llega a Spotify desde fuera (Instagram, TikTok, YouTube), el algoritmo lo registra como una señal de alto valor. Por eso, cada pieza de contenido que publiques en redes sociales debe incluir el link directo a tu canción en Spotify.</p>
+<p>Herramientas como SmartLinks (disponible en Algoritmo en Movimiento) te permiten crear un único link que dirige a cada usuario a la plataforma que usa, y además te dan estadísticas de qué red convierte mejor.</p>
+
+<h2>Estrategia 7: Colabora con artistas de tu nivel</h2>
+<p>Los featurings y colaboraciones entre artistas del mismo nivel o ligeramente más conocidos son muy efectivos. Cuando lanzáis una canción juntos, cada uno expone su música a la audiencia del otro. El algoritmo muestra la canción a los fans de ambos artistas, multiplicando el alcance potencial.</p>
+<p>Busca artistas de tu género con audiencias similares a la tuya en tamaño. Las colab entre artistas de niveles muy diferentes suelen beneficiar principalmente al artista menos conocido.</p>
+
+<h2>Estrategia 8: Usa TikTok para generar descubrimiento viral</h2>
+<p>TikTok se ha convertido en la principal fuente de descubrimiento musical. Una canción que se convierte en audio de tendencia en TikTok puede generar millones de streams en Spotify en cuestión de días. Sube fragmentos de tus canciones a TikTok y anima a otros a usarlos en sus vídeos.</p>
+<p>No necesitas millones de seguidores en TikTok para que esto funcione. Un vídeo puede volverse viral independientemente del tamaño de tu cuenta.</p>
+
+<h2>Estrategia 9: Optimiza tu perfil de artista</h2>
+<p>Un perfil con foto de calidad, bio interesante y Artist Pick activo convierte mucho mejor que un perfil incompleto. Cuando alguien descubre tu música y visita tu perfil, un perfil bien cuidado aumenta la probabilidad de que te siga y explore más canciones.</p>
+
+<h2>Estrategia 10: Invierte en publicidad meta de forma inteligente</h2>
+<p>Una campaña de Meta Ads (Instagram y Facebook) bien segmentada puede ser muy efectiva. La clave es:</p>
+<ul>
+  <li>Segmentar a fans de artistas similares de tu género</li>
+  <li>Usar vídeo corto de 15 segundos con el gancho de tu canción</li>
+  <li>Llevar el tráfico directamente a Spotify, no a tu perfil de Instagram</li>
+  <li>Empezar con presupuestos pequeños (5-10€ diarios) y escalar lo que funciona</li>
+</ul>
+
+<div class="highlight-box"><p>💡 <strong>La clave del crecimiento sostenible:</strong> No existe una estrategia mágica. El crecimiento consistente en Spotify es el resultado de combinar varias de estas estrategias durante meses. Los artistas que crecen de verdad son los que trabajan de forma sistemática y constante, no los que buscan atajos.</p></div>
+
+<div class="cta-box">
+  <h3>Empieza hoy: entra en playlists reales gratis</h3>
+  <p>3 envíos gratuitos a playlists colaborativas activas. Sin tarjeta, sin bots, sin riesgo.</p>
+  <a href="https://www.algoritmoenmovimiento.com" target="_blank" class="btn btn-gold">Empezar gratis →</a>
+</div>
+`
+},
+
+// ARTÍCULO 6
+{
+tag:'Estrategia',
+title:'Cómo hacer un lanzamiento musical exitoso paso a paso en 2025',
+img:'https://images.unsplash.com/photo-1504898770365-14faca6a7320?w=900&q=80',
+time:'10 min lectura',
+date:'Abril 2025',
+body:`
+<h2>Por qué la mayoría de lanzamientos fallan</h2>
+<p>La mayoría de artistas independientes cometen el mismo error: trabajan meses en producir una canción y luego la suben a Spotify sin ninguna estrategia de lanzamiento. El resultado es predecible: la canción empieza con pocos streams, el algoritmo no la detecta como relevante y acaba enterrada entre millones de canciones.</p>
+<p>Un buen lanzamiento no empieza el día en que publicas la canción. Empieza semanas o incluso meses antes. Aquí tienes el plan completo.</p>
+
+<h2>8 semanas antes: preparación</h2>
+
+<h3>Finaliza la producción y el master</h3>
+<p>Tu canción debe estar completamente terminada, mezclada y masterizada antes de iniciar el proceso de lanzamiento. El mastering es el paso final que optimiza el audio para las plataformas de streaming. Puedes usar servicios de mastering online como LANDR o Matchering para un resultado profesional a bajo coste.</p>
+
+<h3>Crea el artwork</h3>
+<p>La portada es la imagen que representa tu canción en Spotify y todas las plataformas. Debe ser cuadrada (mínimo 3000×3000px), profesional y coherente con tu imagen artística. Evita imágenes de banco con watermark, texto ilegible o diseños muy sobrecargados.</p>
+
+<h2>4 semanas antes: distribución y pitch</h2>
+
+<h3>Sube la canción a DistroKid</h3>
+<p>Programa el lanzamiento para dentro de 4 semanas. Sube el WAV, el artwork y rellena toda la metadata correctamente. El nombre del artista debe ser exactamente como quieres que aparezca en todas las plataformas.</p>
+
+<h3>Haz el pitch editorial a Spotify</h3>
+<p>Desde Spotify for Artists, envía tu canción a la consideración editorial. Tienes que hacerlo al menos 7 días antes del lanzamiento, así que con 4 semanas de margen tendrás tiempo de sobra. Rellena cada campo con cuidado y sé específico.</p>
+
+<h3>Contacta con curators de playlists</h3>
+<p>Envía tu canción a playlists colaborativas de tu género. Puedes hacerlo a través de Algoritmo en Movimiento (3 envíos gratuitos al mes) o Liga Music para llegar a curators premium. El objetivo es conseguir que la canción ya esté en algunas playlists desde el día del lanzamiento.</p>
+
+<h2>2 semanas antes: construcción de expectativas</h2>
+
+<h3>Anuncia el lanzamiento en redes sociales</h3>
+<p>Empieza a crear anticipación: comparte fragmentos de la canción en TikTok e Instagram, haz countdown stories, muestra el proceso de creación en formato behind the scenes. La gente que sabe que viene un lanzamiento lo guardará en su calendario mental y estará más pendiente el día del estreno.</p>
+
+<h3>Prepara el contenido para el día del lanzamiento</h3>
+<p>Crea todo el contenido que vas a publicar el día del lanzamiento y los días siguientes con antelación. Así el día de lanzamiento no tienes que improvisar bajo presión.</p>
+
+<h2>La semana del lanzamiento</h2>
+
+<h3>El día del lanzamiento: máxima actividad</h3>
+<p>El día en que tu canción se publica es el más importante. El algoritmo de Spotify presta especial atención a las primeras 24-48 horas. En ese período necesitas generar el mayor número posible de streams, saves y acciones positivas.</p>
+<ul>
+  <li>Publica en todas tus redes sociales con el link a la canción</li>
+  <li>Manda el link a todos tus contactos personales pidiéndoles que la escuchen y la guarden</li>
+  <li>Activa el Artist Pick en Spotify for Artists para destacarla en tu perfil</li>
+  <li>Haz stories y videos en directo hablando del lanzamiento</li>
+</ul>
+
+<h3>Los 7 días siguientes: mantener el momentum</h3>
+<p>No desaparezcas después del día de lanzamiento. Los algoritmos siguen procesando datos durante días. Continúa creando contenido relacionado con la canción: reacciones de fans, covers, versiones en directo, explicando la historia de la canción.</p>
+
+<h2>Después del lanzamiento: análisis y aprendizaje</h2>
+<p>Una semana después del lanzamiento, revisa las estadísticas en Spotify for Artists:</p>
+<ul>
+  <li>¿Cuántos streams totales?</li>
+  <li>¿Cuál es el save rate?</li>
+  <li>¿Desde dónde te encuentran los oyentes?</li>
+  <li>¿En qué países tienes más tracción?</li>
+</ul>
+<p>Estos datos te ayudarán a mejorar la estrategia de tu próximo lanzamiento. Trata cada lanzamiento como un experimento del que aprendes algo nuevo.</p>
+
+<div class="cta-box">
+  <h3>Prepara tu próximo lanzamiento</h3>
+  <p>Distribuye tu música con DistroKid y llega a Spotify, Apple Music y +150 plataformas desde 22€ al año.</p>
+  <a href="https://distrokid.com/vip/seven/4422815" target="_blank" class="btn btn-gold">Empezar con DistroKid →</a>
+</div>
+`
+},
+
+// ARTÍCULO 7
+{
+tag:'Marketing',
+title:'Cómo usar las redes sociales para promocionar tu música y crecer como artista',
+img:'https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=900&q=80',
+time:'9 min lectura',
+date:'Abril 2025',
+body:`
+<h2>Las redes sociales como motor de descubrimiento musical</h2>
+<p>En 2025, las redes sociales son el principal canal de descubrimiento musical para las nuevas generaciones. TikTok ha lanzado la carrera de cientos de artistas que partían de cero. Instagram conecta artistas con sus comunidades. YouTube construye audiencias fieles a largo plazo. Saber usar estas plataformas no es opcional: es una parte fundamental del trabajo de ser artista independiente hoy.</p>
+
+<h2>TikTok: el mayor acelerador de descubrimiento musical actual</h2>
+<p>TikTok es la red social más poderosa para el descubrimiento musical por su algoritmo único que puede mostrar tu contenido a millones de personas independientemente de cuántos seguidores tengas. Una canción que se convierte en audio de tendencia puede generar millones de streams en días.</p>
+
+<h3>Cómo usar TikTok para promocionar tu música</h3>
+<ul>
+  <li><strong>Sube tu canción como audio original:</strong> cuando subes un vídeo con tu canción de fondo, cualquier otra persona puede usar ese audio en sus propios vídeos, multiplicando exponencialmente el alcance.</li>
+  <li><strong>Muestra el proceso creativo:</strong> los vídeos de making-of, grabación en estudio y producción generan mucho engagement.</li>
+  <li><strong>Participa en trends:</strong> si hay un trend de baile o lip-sync que encaja con tu música, úsalo. Esto expone tu canción a la audiencia de ese trend.</li>
+  <li><strong>Publica con consistencia:</strong> la regularidad es clave en TikTok. 3-5 vídeos por semana mantiene tu presencia en el algoritmo.</li>
+</ul>
+
+<h2>Instagram: construir comunidad y profundidad</h2>
+<p>Instagram es más efectivo para construir una relación profunda con tus fans existentes que para descubrimiento masivo. Pero es fundamental para mantener el interés de tu audiencia entre lanzamientos.</p>
+
+<h3>Estrategia de contenido para Instagram</h3>
+<ul>
+  <li><strong>Stories diarias:</strong> mantienen tu presencia top-of-mind sin requerir tanto esfuerzo como los posts del feed</li>
+  <li><strong>Reels con fragmentos de música:</strong> los Reels tienen mayor alcance orgánico que los posts estáticos</li>
+  <li><strong>Contenido behind the scenes:</strong> estudio, ensayos, proceso de composición</li>
+  <li><strong>Link en bio a Spotify:</strong> siempre, de forma permanente</li>
+</ul>
+
+<h2>YouTube: la plataforma de largo plazo</h2>
+<p>YouTube tiene un ritmo diferente a TikTok e Instagram. Los vídeos de YouTube tienen una vida mucho más larga y pueden seguir generando visitas años después de publicarse. Para músicos, las opciones son:</p>
+<ul>
+  <li>Videoclips oficiales</li>
+  <li>Vídeos de letra (lyric videos)</li>
+  <li>Sesiones en directo o acústicas</li>
+  <li>Vídeos de proceso creativo más elaborados</li>
+</ul>
+
+<h2>La regla de oro: siempre lleva el tráfico a Spotify</h2>
+<p>Independientemente de qué red social uses, el objetivo final siempre debe ser llevar a los oyentes a tu música en Spotify. Cada post, cada story, cada vídeo debe incluir o hacer referencia al link de tu canción.</p>
+<p>Cuando alguien llega a Spotify desde una red social, el algoritmo lo registra como una señal de valor elevado. Esto alimenta directamente tus recomendaciones algorítmicas.</p>
+
+<div class="highlight-box"><p>💡 <strong>Herramienta útil:</strong> Usa SmartLinks para crear un único link que dirige a cada usuario a su plataforma preferida. Así no tienes que elegir entre Spotify, Apple Music o YouTube: el link detecta qué plataforma usa cada persona y la redirige automáticamente.</p></div>
+
+<h2>Cómo gestionar el tiempo en redes sociales sin volverse loco</h2>
+<p>El mayor error es intentar estar en todas las plataformas al 100% al mismo tiempo. Para un artista independiente que también tiene que producir música, eso es imposible. La estrategia correcta es:</p>
+<ol>
+  <li>Elige 1-2 plataformas donde tu audiencia ya está</li>
+  <li>Crea contenido de forma eficiente: un video puede transformarse en un Reel, un TikTok y un Short de YouTube</li>
+  <li>Usa herramientas de programación como Later o Buffer para publicar en los mejores horarios sin estar pegado al móvil</li>
+  <li>Dedica 1-2 horas semanales específicas a crear contenido, no lo hagas de forma improvisada</li>
+</ol>
+
+<div class="cta-box">
+  <h3>¿Ya tienes música en Spotify para promocionar?</h3>
+  <p>Si aún no has distribuido tu música, empieza hoy con DistroKid y tenla en Spotify en 24 horas.</p>
+  <a href="https://distrokid.com/vip/seven/4422815" target="_blank" class="btn btn-gold">Distribuir mi música →</a>
+</div>
+`
+},
+
+// ARTÍCULO 8
+{
+tag:'Distribución',
+title:'Las mejores distribuidoras musicales de 2025: cuál elegir y por qué',
+img:'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=900&q=80',
+time:'8 min lectura',
+date:'Abril 2025',
+body:`
+<h2>¿Por qué necesitas una distribuidora musical?</h2>
+<p>Como artista independiente, no puedes subir tu música directamente a Spotify o Apple Music. Necesitas una distribuidora: una empresa intermediaria que tiene acuerdos con todas las plataformas de streaming y que te permite publicar tu música en ellas.</p>
+<p>Elegir la distribuidora correcta es una de las decisiones más importantes que tomarás como artista. Afecta directamente a cuánto dinero cobras, con qué rapidez recibes los pagos y qué funciones tienes disponibles para gestionar tu carrera.</p>
+
+<h2>Los factores clave para elegir una distribuidora</h2>
+<p>Antes de comparar opciones concretas, tienes que tener claros los factores que más importan:</p>
+<ul>
+  <li><strong>Comisiones:</strong> ¿se queda la distribuidora un porcentaje de tus regalías o cobra una tarifa fija?</li>
+  <li><strong>Velocidad de distribución:</strong> ¿cuánto tarda en aparecer tu música en las plataformas?</li>
+  <li><strong>Número de plataformas:</strong> ¿a cuántos servicios distribuye?</li>
+  <li><strong>Funciones adicionales:</strong> estadísticas, pitch editorial, registro de derechos, etc.</li>
+  <li><strong>Velocidad de pago:</strong> ¿con qué frecuencia te pagan?</li>
+</ul>
+
+<h2>Comparativa de las principales distribuidoras en 2025</h2>
+
+<h3>DistroKid — La mejor opción para artistas independientes</h3>
+<p>DistroKid es nuestra recomendación número uno para artistas independientes y la distribuidora más popular del mercado. Sus ventajas son claras:</p>
+<ul>
+  <li><strong>100% de las regalías:</strong> no cobra comisión sobre tus ingresos</li>
+  <li><strong>Tarifa anual fija:</strong> desde aproximadamente 22€ al año para canciones ilimitadas</li>
+  <li><strong>Distribución rapidísima:</strong> tu música puede estar en Spotify en 24-48 horas</li>
+  <li><strong>+150 plataformas:</strong> Spotify, Apple Music, TikTok, Amazon, YouTube Music y muchas más</li>
+  <li><strong>Funciones avanzadas:</strong> estadísticas, splits de regalías para colaboraciones, registro de letras</li>
+</ul>
+<p>El único inconveniente es que si no renuevas la suscripción, tu música se elimina de las plataformas (aunque existe la opción "Leave a Legacy" para evitarlo).</p>
+<div class="green-box"><p>✅ <strong>Accede con descuento:</strong> Regístrate en DistroKid a través de nuestro link de referido y obtén un descuento exclusivo en tu primer año: <strong>distrokid.com/vip/seven/4422815</strong></p></div>
+
+<h3>TuneCore — Buena opción pero más cara</h3>
+<p>TuneCore cobra una tarifa anual por álbum o single y te da el 100% de las regalías. Sus estadísticas son muy detalladas y tiene buen soporte. Sin embargo, si tienes muchos lanzamientos, el coste anual se dispara. No recomendada para artistas que lanzan con mucha frecuencia.</p>
+
+<h3>CD Baby — Clásica pero con comisiones</h3>
+<p>CD Baby cobra entre el 9% y el 15% de tus regalías dependiendo del plan. A cambio, tu música permanece en las plataformas indefinidamente aunque dejes de pagar. Es una opción razonable para artistas que no planean lanzar mucho y quieren olvidarse de renovaciones anuales.</p>
+
+<h3>Amuse — Buena opción gratuita para empezar</h3>
+<p>Amuse tiene un plan gratuito que te permite distribuir música a cambio de retener el 20% de tus regalías. Para artistas que absolutamente no pueden invertir dinero al principio, es una opción. Pero en cuanto tengas mínimamente algún ingreso, la inversión en DistroKid se amortiza rápidamente.</p>
+
+<h3>Believe — Para artistas con mayor volumen</h3>
+<p>Believe es más adecuada para artistas con un volumen de streams significativo o para sellos pequeños. Trabaja con modelos de comisión y ofrece más servicios de marketing y distribución física.</p>
+
+<h2>Nuestra recomendación definitiva</h2>
+<p>Para la gran mayoría de artistas independientes que están empezando o en una fase de crecimiento, <strong>DistroKid es la mejor opción</strong> por su combinación de precio, rapidez, funciones y flexibilidad.</p>
+<p>La inversión anual es mínima (menos de 2€ al mes) y recuperas esa inversión con muy pocos streams. Si tienes oyentes reales escuchando tu música, DistroKid se paga solo.</p>
+
+<div class="cta-box">
+  <h3>Empieza con DistroKid hoy con descuento</h3>
+  <p>Usa nuestro link de referido exclusivo y accede a la distribuidora favorita de los artistas independientes con un descuento especial.</p>
+  <a href="https://distrokid.com/vip/seven/4422815" target="_blank" class="btn btn-gold">Registrarme con descuento →</a>
+</div>
+`
+}
+
+];
+
+function openArticle(index) {
+  const a = articles[index];
+  document.getElementById('modalContent').innerHTML = `
+    <img class="article-hero-img" src="${a.img}" alt="${a.title}">
+    <div class="article-content">
+      <span class="article-tag">${a.tag}</span>
+      <h1 class="article-title">${a.title}</h1>
+      <div class="article-meta">
+        <span>📅 <strong>${a.date}</strong></span>
+        <span>⏱ <strong>${a.time}</strong></span>
+        <span>✍️ <strong>Equipo Monetiza Tu Talento</strong></span>
+      </div>
+      <div class="article-body">${a.body}</div>
+    </div>
+  `;
+  const modal = document.getElementById('modal');
+  modal.classList.add('open');
+  modal.scrollTop = 0;
+  document.body.style.overflow = 'hidden';
+}
+
+function closeArticle() {
+  document.getElementById('modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeArticle(); });
+</script>
+</body>
+</html>
